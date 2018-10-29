@@ -12,14 +12,14 @@ public class QuickSort {
 			numbers[i] = rand.nextInt(10);
 		}
 		
-		numbers = quickSort(numbers); 
+		quickSort(numbers); 
 		
 		for (int i = 0; i < n; i++) {
 			System.out.print(numbers[i]);
 		}
 	}
 	
-	public static int[] quickSort(int[] arr) {
+	public static void quickSort(int[] arr) {
 		int pivot = arr[arr.length - 1];
 		int i = 0;
 		int j = 0;
