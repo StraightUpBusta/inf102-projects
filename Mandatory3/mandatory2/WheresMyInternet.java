@@ -5,27 +5,21 @@ public class WheresMyInternet {
 		Kattio io = new Kattio(System.in, System.out);
 		int N = io.getInt();
 		int M = io.getInt();
-		Graph G = new Graph(N);
+		Graph G = new Graph(N + 1);
 		for (int i = 0; i < M; i++) {
-			int v = io.getInt() - 1;
-			int w = io.getInt() - 1;
+			int v = io.getInt();
+			int w = io.getInt();
 			G.addEdge(v, w);
 		}
 		DepthFirstSearch dfs = new DepthFirstSearch(G, 1);
-		MyQueue<Integer> noConn = new MyQueue<>();
-		// vertices in Graph go from 0 to N-1. House 1 is therefore 0 and is already connected.
-		for (int i = 1; i < N; i++) { 
+		boolean allConn = true;
+		for (int i = 1; i <= N; i++) { 
 			if (!dfs.hasPathTo(i)) { // put unconnected houses on queue
-				noConn.enqueue(i + 1);
+				io.println(i);
+				allConn = false;
 			}
 		}
-		if (noConn.isEmpty()) {
-			System.out.println("Connected");
-		} else {
-			for (int house : noConn) {
-				System.out.println(house);
-			}
-		}
+		if (allConn) io.println("Connected");
 		io.close();
 	}
 }

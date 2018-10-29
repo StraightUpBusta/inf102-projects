@@ -1,11 +1,11 @@
 package no.uib.ii.inf102.f18.mandatory2;
 
-public class Graph {
-	private final int V; 
-	private int E; 
+public class Digraph {
+	private final int V;
+	private int E;
 	private MyBag<Integer>[] adj;
 	
-	public Graph(int V) {
+	public Digraph(int V) {
 		if (V < 0) throw new IllegalArgumentException("V can not be negative");
 		this.V = V;
 		this.E = 0;
@@ -15,21 +15,20 @@ public class Graph {
 		}
 	}
 	
+	public int V() {
+		return V;
+	}
+
+	public int E() {
+		return E;
+	}
+	
 	public void addEdge(int v, int w) {
-		E++;
 		adj[v].add(w);
-		adj[w].add(v);
+		E++;
 	}
 	
 	public Iterable<Integer> adj(int v) {
 		return adj[v];
-	}
-	
-	public int V() {
-		return V;
-	}
-	
-	public int E() {
-		return E;
 	}
 }
